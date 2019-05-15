@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 public class FirefoxSetup {
@@ -29,12 +31,19 @@ public class FirefoxSetup {
         return driver;
     }
 
-    @AfterTest
-    public void quitDriver() {
+//    @AfterTest
+//    public void quitDriver() {
+//        driver.quit();
+//    }
+
+    @AfterMethod
+    public void closeOut() {
+        driver.manage().deleteAllCookies();
         driver.quit();
     }
+}
 
-
+/*
     @Test
     public void facebookLogin() {
         setupDriver("Mac", "https://www.facebook.com/", "gecko");
@@ -97,3 +106,5 @@ public class FirefoxSetup {
     //ToDo : write 5 test case from Facebook
 
 }
+
+*/
